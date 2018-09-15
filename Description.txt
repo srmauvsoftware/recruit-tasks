@@ -1,0 +1,23 @@
+﻿TASK 1 : IMAGE PROCESSING
+Using image processing, design an implementation to detect each colored Buoy in the 
+image :
+
+You are required to compute the X,Y coordinates of the centre of each buoy detected.
+Colored Buoys must be isolated from similar colored objects. Opencv Image Processing 
+library is allowed for the same, if you have no prior experience with OpenCV , we will accept 
+Matlab implementations as well. Nevertheless, priority will be given to desig
+n using OpenCV .
+Plus Points For 
+-
+1. Machine Learning Approach for buoy detection. 
+2. A line from mid point of the frame to mid point of each buoy. 
+3. Classifying each buoy with its color name. 
+4 . Implementing ROS with the task. See task 0 for more information.
+
+Solution - 
+
+I used opencv to complete the task. First I converted the from bgr to hsv fromat.
+Then I used the inRange function of opencv to create a mask which will show all the objects with colour in the given range as black i.e red,blue and green colour will be black and the background will be white. Bitwise_not will change the black to white and white to black. Applying Gaussianblur and erode function will remove the noise and smooth the mask i.e will give proper boundaries to the buoy. The mask is applied on the hsv using bitwise_and opertation. The contours are found using the findContours function and are drawn on the original image with their center .
+The center is image is found from the image dimension and a line is drawn from the center of the image to the center of all the contours.
+
+
