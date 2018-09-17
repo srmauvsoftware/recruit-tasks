@@ -1,0 +1,24 @@
+
+TASK 1 : IMAGE PROCESSING
+Using image processing, design an implementation to detect each colored Buoy in the image:You are required to compute the X,Y coordinates of the centre of each buoy detected.Colored  Buoys  must  be  isolated  from  similar  colored  objects.  Opencv  Image  Processing library is allowed for the same, if you have no prior experience with OpenCV , we will accept Matlab implementations as well. Nevertheless, priority will be given to design using OpenCV .Plus Points For -1.Machine Learning Approach for buoy detection. 2.A line from mid point of the frame to mid point of each buoy. 3.Classifying each buoy with its color name. 3. Implementing ROS with the task.
+
+SOLUTION:
+auv.py(Image Processing Task)
+
+In the auv.py I completed my task first I took the image using cv2.imread() function converted the image from BGR to HSV. The very simple reason to convert BGR to HSV is that HSV which stands for Hue, Saturation and Value defines a range of color in them rather than BGR which defines a particular set of pixels of color which is quite ambiguous. Then i defined the HSV for blue color. which masks all the color defined in that range i.e blue(here in this reference) The next what I applied is cv2.bitwise_not which masks all the color which are not blue. I then applied smoothing, blurring and morphology for perfect detection of buoys and removal of noise. The contours are then found by the function cv2.findContours() and then stored in the cnts list. I used the moments function to define each and every center of the color. Befor displaying the image I again converted into BGR and displayed it.
+
+publisher.py(ROS publisher)
+I defined a publisher which gets a list of coordinates of the buoys from the auv.py and publishes those messages
+
+coordinate_subscriber.py(ROS subscriber)
+It is the ROS subscriber which are defined in the same channel as of ROS publisher i.e center
+
+coordinate.msg
+It is the custom message
+
+2.zip
+The data labelling task that was given. Each and every image is converted into .xml file
+
+
+
+
