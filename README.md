@@ -1,2 +1,1 @@
-# recruit-tasks
-Recruitment tasks for SRMAUV
+# SRMAUV-TASKS
